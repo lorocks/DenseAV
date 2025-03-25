@@ -1205,8 +1205,15 @@ def my_app(cfg: DictConfig) -> None:
         torch.cuda.empty_cache()
 
     if cfg.pretrain_steps > 0 and train_chkpt is None:
+        print("---"*10)
+        print("Setup with full_train = False")
         run_exp(aligner, full_train=False)
-    run_exp(aligner, full_train=True)
+        print("---"*10)
+    else:
+        print("---"*10)
+        print("Setup with full_train = False")
+        run_exp(aligner, full_train=True)
+        print("---"*10)
 
 
 if __name__ == "__main__":
