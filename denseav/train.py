@@ -246,6 +246,8 @@ class LitAVAligner(pl.LightningModule, PyTorchModelHubMixin, repo_url="https://g
         self.memory_buffer = deque(maxlen=self.memory_buffer_size)
         self.loss_leak = loss_leak
 
+        self.full_train = False # Added by me
+
         if self.audio_model_type in {"audiomae", "audiomae-finetuned", "cavmae", "cavmae-mixed", "imagebind"}:
             self.audio_input = "spec"
         elif self.audio_model_type == "davenet":
